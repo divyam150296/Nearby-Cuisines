@@ -50,14 +50,17 @@ const Content =  () => {
 
   return (
     <div>
-      { imageArr?.length ? <><CreatorDetails
+      { imageArr?.length ? <>
+      <CreatorDetails
         imageArray={imageArr}
         details={details}
         name="Divyam"
         profession="Software developer"
         age="21"
-        nationality="Indian" /><UserCardClass name="Divyam" age="25" /></> : ''}
-      
+        nationality="Indian" 
+      />
+      <UserCardClass name="Divyam" age="25" />
+        </> : ''}
     </div>
   )
 }

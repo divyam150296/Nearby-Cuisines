@@ -6,7 +6,7 @@ const SkeletalLoading = ({ count = 6 }) => {
     <div className="skeletal-container">
       {
         dummyArray.map((_, index) => {
-          return  <div key={index} className="res-card skeletal-card"></div>
+          return  <div key={index} className=""></div>
         })
       }
     </div>
