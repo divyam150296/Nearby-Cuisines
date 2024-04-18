@@ -27,7 +27,7 @@ const Body = () => {
   if (listingData && listingData.length === 0) {
     const count = 8
     return (
-      <div className='res-container'>
+      <div className=''>
         <SkeletalLoading count={count} />
       </div>
     )
@@ -46,9 +46,9 @@ const Body = () => {
             setListingFilteredData(filteredList)
           }
         }}/>
-      <div className='res-container'>
+      <div className='flex justify-start flex-wrap gap-x-0.5'>
       {
-        listingFilteredData?.length && listingFilteredData.map((ele) => <ResturantCard resData={ele} key={ele.info.resId}/>)
+      listingFilteredData?.length && listingFilteredData.map((ele) => <ResturantCard resData={ele} key={ele.info.resId}/>)
       }
         </div>
     </div>
