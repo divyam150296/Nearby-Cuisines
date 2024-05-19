@@ -5,6 +5,7 @@ const CreatorDetails = (props) => {
   console.log(props.imageArray, 'array', props.details)
   const sectionDataBasicInfo = props?.details?.page_data?.sections?.SECTION_BASIC_INFO
   const ratingObject = sectionDataBasicInfo?.rating_new?.ratings
+  const ratingColorCode = ratingObject?.DINING?.rating && ratingObject?.DINING?.rating < 4.7 ? 'bg-red-400' : 'bg-green-400'
   return(
     <div>
       <div className='grid-length grid grid-cols-5 gap-x-9 mt-4'>
@@ -13,11 +14,25 @@ const CreatorDetails = (props) => {
           // return(<div>{ele}</div>)
         )}
       </div>
-      <h1>{sectionDataBasicInfo?.name}</h1>
-      <h2>{ratingObject?.DELIVERY?.rating}</h2>
-      <div>{ratingObject?.DELIVERY?.reviewCount}</div>
-      <h3>{ratingObject?.DINING?.rating}</h3>
-      <div>{ratingObject?.DINING?.reviewCount}</div>
+      <div className='flex justify-between'>
+        <h1 className='text-3xl font-semibold'>{sectionDataBasicInfo?.name}</h1>
+        <div className='flex justify-between'>
+          <div className='flex justify-between items-center'>
+            <h2 className='p-1.5 border-2 border-black rounded-lg bg-green-400'>{ratingObject?.DELIVERY?.rating}</h2>
+            <div className='px-4'>
+              <div>added by</div>
+              <div>{ratingObject?.DELIVERY?.reviewCount}</div>
+            </div>
+          </div>
+          <div className='flex justify-between items-center'>
+            <h3 className={`p-1.5 border-2 border-black rounded-lg ${ratingColorCode}`}>{ratingObject?.DINING?.rating}</h3>
+            <div className='px-4'>
+              <div>added by</div>
+              <div>{ratingObject?.DINING?.reviewCount}</div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* <div className='grid-length'>
         <div>elemet</div>
         <div>Hello</div>
