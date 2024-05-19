@@ -6,6 +6,8 @@ import Body from '~/src/components/Body'
 import Dynamic from '~/src/components/Dynamic'
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from 'react'
+import { Provider } from 'react-redux'
+import store from '~/src/store/index.js'
 
 
 const DynamicPage = lazy(() => import('~/src/components/Dynamic'))
@@ -45,4 +47,4 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<RouterProvider router={appRouter} />)
+root.render(<Provider store={store}><RouterProvider router={appRouter}></RouterProvider></Provider>)

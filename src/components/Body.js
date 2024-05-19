@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react'
 import ResturantCard from '~/src/components/ResturantCard'
 import SkeletalLoading from '~/src/components/SkeletalLoading'
 import useOnlineData from '~/src/utils/useOnlineData'
-// import { resturantData } from '~/src/utils/dummyData'
+import { primarySliceAction } from '~/src/store/index.js'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Body = () => {
-
+  const dispatch = useDispatch()
+  const storeCounter = useSelector((state) => state.counter.counter)
+  const authorizationStatus = useSelector((state) => state.authorization.authourized)
   const [listingData, setListingData] = useState([])
   const [listingFilteredData, setListingFilteredData] = useState([])
   const [ searchData, setSearchData] = useState([])
@@ -33,11 +36,16 @@ const Body = () => {
     )
   }
 
+  const searchClick = () => {
+    // console.log('search click', primarySliceAction, 'author', authorizationStatus)
+    dispatch(primarySliceAction.toogleCounter(10))
+  }
+
   return (
     // <div>Hello</div>
     <div className='body'>
-      <div className='search'>
-        Searchs
+      <div className='search' onClick={() => { searchClick() }}>
+        Search {storeCounter}
       </div>
         <input type='text' value={searchData} onChange={(e) => {
           setSearchData(e.target.value)
