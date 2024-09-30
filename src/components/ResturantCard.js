@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom"
+import { productAction } from '~/src/store/productCart.js'
+import { useDispatch } from 'react-redux'
+
 
 const ResturantCard = (props) => {
 
@@ -8,6 +11,12 @@ const ResturantCard = (props) => {
 
   const {info, o2FeaturedImage, cardAction  } = props.resData
   const contentUrl = `content${cardAction?.clickUrl}`
+  const dispatch = useDispatch()
+
+  const addItemToCart= (item) => {
+    // console.log(item)
+    // dispatch(productAction.addProductInBasket())
+  }
   // const hasImage = objectWithData.hasOwnProperty('image');
   return (
     <div className='bg-slate-50 card-width flex flex-col justify-between items-center'>
@@ -18,6 +27,7 @@ const ResturantCard = (props) => {
       <div>
         { info?.o2FeaturedImage?.url ? <img  className='object-cover w-40 h-40' src={info.o2FeaturedImage.url} /> : <p>No data</p>}
       </div>
+      <button onClick={addItemToCart(props.resData)}>Add to Cart</button>
       {/* <h4>{ cardAction?.clickUrl }</h4> url */}
       
       <Link to={contentUrl} className=" text-violet-500"> Take a look -{">"} </Link>
