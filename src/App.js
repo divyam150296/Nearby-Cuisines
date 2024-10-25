@@ -11,8 +11,9 @@ import store from '~/src/store/index.js'
 
 
 const DynamicPage = lazy(() => import('~/src/components/Dynamic'))
-
+console.log('app added in the component')
 const AppLayout = () => {
+  console.log('layoit')
   return (
     <div className='app py-4 px-4'>
       <Header />
