@@ -47,8 +47,8 @@ const Body = () => {
     let featuredDataForCard = []
     // https://www.zomato.com/webroutes/getPage?page_url=/bangalore/dominos-pizza-koramangala-5th-block-bangalore/order?contextual_menu_params=eyJkaXNoX3NlYXJjaCI6eyJ0aXRsZSI6IkJlc3QgaW4gUGl6emEiLCJkaXNoX2lkcyI6WyI2ODk4NyJdLCJjdWlzaW5lX2lkcyI6W119fQ%3D%3D&location=&isMobile=0
     await featuredData('/bangalore/la-pinoz-pizza-koramangala-4th-block-bangalore/order').then((value) => {
-      const featureData1 = value?.page_data?.order?.menuList?.menus[2]?.menu?.categories[0].category.items
-      const featureData2 = value?.page_data?.order?.menuList?.menus[2]?.menu?.categories[1].category.items
+      const featureData1 = value?.page_data?.order?.menuList?.menus[2]?.menu?.categories[0]?.category.items || []
+      const featureData2 = value?.page_data?.order?.menuList?.menus[2]?.menu?.categories[1]?.category.items || []
       featuredDataForCard = [...featureData1, ...featureData2]
       setFeaturedCardData(featuredDataForCard)
       dispatch(productAction.addFeaturedCard(featuredDataForCard))
